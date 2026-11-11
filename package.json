@@ -1,0 +1,21 @@
+{
+  "name": "after-the-rain",
+  "version": "0.1.0",
+  "productName": "After the Rain",
+  "private": true,
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "build": "node build.mjs",
+    "desktop": "electron .",
+    "build:windows": "npm run build && node package-windows.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "esbuild": "0.28.2",
+    "electron": "44.5.1"
+  }
+}

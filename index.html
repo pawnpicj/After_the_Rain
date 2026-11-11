@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101816">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+  <title>After the Rain</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="dist/game.js"></script>
+</head>
+<body>
+  <main id="game" aria-label="After the Rain">
+    <canvas id="scene" aria-label="ฉากเกมสามมิติ"></canvas>
+    <div id="vignette" aria-hidden="true"></div>
+    <div id="damage" aria-hidden="true"></div>
+    <header id="hud" hidden>
+      <div class="mission">
+        <p id="mission-label" class="kicker">AFTER THE RAIN</p>
+        <p id="objective">ฝ่าแนวกั้นไปยังประตูขนสินค้า</p>
+        <p id="remaining"></p>
+        <p id="alarm-status" role="status" hidden>สัญญาณกันขโมยทำงาน</p>
+      </div>
+      <div class="status">
+        <div class="meter-row"><span>พลังชีวิต</span><span id="health-value">100</span></div>
+        <div class="meter health"><i id="health"></i></div>
+        <div class="meter-row"><span>สโลว์เวลา</span><span id="focus-value">100%</span></div>
+        <div class="meter focus"><i id="focus"></i></div>
+      </div>
+      <div class="weapon">
+        <p id="ammo"><strong>12</strong><span> / </span>60</p>
+        <p id="reload-status">ปืนพก</p>
+      </div>
+      <div id="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p id="time-status" hidden>BULLET TIME</p>
+      <p id="prompt" hidden></p>
+      <p class="pause-hint"><kbd>Esc</kbd> หยุดเกม</p>
+    </header>
+    <section id="overlay" class="overlay" aria-labelledby="screen-title">
+      <div class="panel">
+        <p id="chapter" class="kicker">คดีตระกูล WOLF</p>
+        <h1 id="screen-title">AFTER<br>THE RAIN</h1>
+        <p id="description"></p>
+        <p id="story-lead" hidden></p>
+        <fieldset id="character-select">
+          <legend>เลือกตำรวจนอกเครื่องแบบ</legend>
+          <label><input type="radio" name="officer" value="logan"><span>Logan Wolf</span></label>
+          <label><input type="radio" name="officer" value="megan" checked><span>Megan Wolf</span></label>
+        </fieldset>
+        <button id="primary" type="button" disabled>เริ่มสืบคดี</button>
+        <button id="restart" class="secondary" type="button" hidden>เริ่มด่านนี้ใหม่</button>
+        <div class="window-actions">
+          <button id="return-menu" type="button" hidden>กลับหน้าเลือกตัวละคร</button>
+          <button id="fullscreen" type="button" hidden><span>เต็มจอ</span><kbd aria-hidden="true" hidden>F11</kbd></button>
+          <button id="exit-game" type="button" hidden>ออกจากเกม</button>
+        </div>
+        <p id="window-message" role="status" hidden></p>
+        <dl id="controls" class="controls">
+          <div><dt><kbd>W A S D</kbd></dt><dd>เคลื่อนที่</dd></div>
+          <div><dt><kbd>เมาส์</kbd></dt><dd>เล็ง / คลิกซ้ายเพื่อยิง</dd></div>
+          <div><dt><kbd>Shift</kbd></dt><dd>กดค้างเพื่อสโลว์เวลา</dd></div>
+          <div><dt><kbd>Space</kbd></dt><dd>พุ่งหลบและยิงกลางอากาศ</dd></div>
+          <div><dt><kbd>R</kbd></dt><dd>บรรจุกระสุน</dd></div>
+          <div><dt><kbd>E</kbd></dt><dd>เปิดประตู / เก็บหรือส่งหลักฐาน</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

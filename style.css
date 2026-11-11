@@ -1,0 +1,161 @@
+:root {
+  color-scheme: dark;
+  font-family: "Inter", "Leelawadee UI", "Segoe UI", sans-serif;
+  color: #f3efe5;
+  background: #101816;
+  --amber: #f0ba6b;
+  --muted: #c6c6bc;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; overflow: hidden; }
+[hidden] { display: none !important; }
+p, h1, dl, dd { margin: 0; }
+#game, #scene, #vignette, #damage, #hud, .overlay { position: fixed; inset: 0; }
+#scene { display: block; width: 100%; height: 100%; }
+#vignette, #damage, #hud { pointer-events: none; }
+#vignette { background: radial-gradient(ellipse at 50% 44%, transparent 35%, #060a09b3 100%); }
+#damage { background: radial-gradient(ellipse, transparent 38%, #a9160dd4 100%); opacity: 0; }
+.overlay {
+  display: grid;
+  align-items: center;
+  padding: clamp(18px, 4vh, 60px) clamp(22px, 7vw, 110px);
+  overflow: auto;
+  background: linear-gradient(90deg, #0c1413 2%, #0b1312f2 21%, #0b1312ad 38%, #0b13122e 68%, #0b131200);
+}
+.panel { width: min(100%, 490px); padding-block: 8px; }
+.kicker {
+  color: var(--amber);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: "Archivo Black", "Arial Black", Impact, "Leelawadee UI", sans-serif;
+  font-size: clamp(48px, 7.4vw, 110px);
+  line-height: .83;
+  font-weight: 900;
+  letter-spacing: -.07em;
+  margin: 18px 0 22px;
+  text-shadow: 0 2px 24px #0008;
+}
+.overlay[data-mode="paused"] h1,
+.overlay[data-mode="lost"] h1,
+.overlay[data-mode="debrief"] h1,
+.overlay[data-mode="won"] h1,
+.overlay[data-mode="error"] h1 {
+  font-family: "Leelawadee UI", "Segoe UI", sans-serif;
+  font-size: clamp(36px, 5vw, 74px);
+  line-height: 1.08;
+  letter-spacing: -.03em;
+}
+#description, #story-lead { max-width: 43ch; color: var(--muted); font-size: 16px; line-height: 1.65; }
+#story-lead { margin-top: 13px; border-left: 2px solid var(--amber); padding-left: 12px; }
+#character-select { border: 0; margin: 12px 0 0; padding: 0; }
+#character-select legend { color: var(--muted); margin-bottom: 5px; font-size: 13px; }
+#character-select label { display: inline-block; cursor: pointer; }
+#character-select input { position: absolute; opacity: 0; }
+#character-select span {
+  display: block;
+  padding: 6px 13px;
+  border: 1px solid #f3efe547;
+  background: #0b1312a3;
+  font-size: 14px;
+  font-weight: 700;
+}
+#character-select input:checked + span { border-color: var(--amber); color: var(--amber); }
+#character-select input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
+button {
+  border: 1px solid var(--amber);
+  background: var(--amber);
+  color: #21170c;
+  font: inherit;
+  font-weight: 800;
+  padding: 11px 18px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+#primary { margin-top: 16px; }
+button:hover { background: #ffd393; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.secondary { display: block; margin-top: 10px; background: #0b1312b0; color: var(--amber); }
+.secondary:hover { background: #2d2417; }
+.window-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.window-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background: #0b1312b0;
+  border-color: #f3efe547;
+  color: #f3efe5;
+  font-size: 13px;
+}
+.window-actions button:hover { background: #252d28; }
+#window-message { margin-top: 8px; color: var(--amber); font-size: 13px; }
+.controls {
+  display: grid;
+  gap: 5px;
+  max-width: 440px;
+  border-top: 1px solid #eee4cc3d;
+  margin-top: 26px;
+  padding-top: 13px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.controls div { display: grid; grid-template-columns: 92px 1fr; align-items: center; }
+kbd {
+  display: inline-block;
+  color: #f3efe5;
+  background: #1d2523;
+  border: 1px solid #f3efe547;
+  padding: 1px 6px;
+  font: 600 12px "Leelawadee UI", "Segoe UI", sans-serif;
+}
+.mission, .status, .weapon, .pause-hint { position: absolute; text-shadow: 0 1px 4px #000; }
+.mission { top: 26px; left: 30px; }
+#objective { font-size: 17px; font-weight: 700; margin-top: 6px; }
+#remaining, #reload-status, .pause-hint { color: var(--muted); font-size: 13px; }
+#alarm-status { margin-top: 6px; color: #ffd2c9; font-size: 13px; font-weight: 800; }
+.pause-hint { top: 26px; right: 30px; }
+.status { bottom: 27px; left: 30px; width: min(200px, 38vw); }
+.meter-row { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; }
+.meter { height: 5px; margin: 5px 0 9px; background: #1b2423; }
+.meter i { display: block; height: 100%; transform-origin: left; }
+.health i { background: #ece5d6; }
+.focus i { background: var(--amber); }
+.weapon { bottom: 32px; right: 30px; text-align: right; }
+#ammo { font-size: 18px; font-variant-numeric: tabular-nums; }
+#ammo strong { font-size: 35px; }
+#ammo span { color: #afab9c; }
+#reticle { position: absolute; top: 50%; left: 50%; color: #fff9e8; }
+#reticle[data-target="true"] { color: #ffbb71; }
+#reticle[data-hit="true"] { color: #f5714c; transform: rotate(45deg); }
+#reticle i { position: absolute; background: currentColor; box-shadow: 0 0 2px #000; }
+#reticle i:nth-child(1) { width: 1px; height: 5px; top: -10px; }
+#reticle i:nth-child(2) { width: 1px; height: 5px; top: 6px; }
+#reticle i:nth-child(3) { height: 1px; width: 5px; left: -10px; }
+#reticle i:nth-child(4) { height: 1px; width: 5px; left: 6px; }
+#time-status, #prompt {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  text-align: center;
+  white-space: nowrap;
+  background: #0c1312ba;
+  padding: 5px 13px;
+}
+#time-status { top: 26px; color: var(--amber); font-weight: 900; letter-spacing: .18em; font-size: 12px; }
+#prompt { bottom: 11%; font-size: 14px; }
+#game[data-slow="true"] #vignette {
+  background: radial-gradient(ellipse at 50% 44%, transparent 33%, #32211665 72%, #3a1d0cc9 100%);
+}
+@media (max-width: 680px) {
+  .overlay { background: linear-gradient(90deg, #0b1312f5, #0b13127a); }
+  .mission, .status { left: 16px; }
+  .weapon, .pause-hint { right: 16px; }
+  #time-status { top: 106px; }
+}
